@@ -156,7 +156,7 @@ public class WordSearch {
 
       
       else if(menu.equals("q")){
-         System.out.println("thank you for playing.");
+         System.out.println("Thank you for playing.");
          System.exit(0);
       }
       menu();

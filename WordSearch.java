@@ -7,6 +7,8 @@ import java.io.*;
 
 public class WordSearch {
 
+//-----------------------------------------------------VARIABLES-&-ARRAYS------------------------------------------------
+
    private static int sizeOfWordSearch = 20;
         // word search 2 dimensional array
    private static String[][] wordSearch = new String[sizeOfWordSearch][sizeOfWordSearch];
@@ -42,6 +44,8 @@ public class WordSearch {
       menu();
    } // end of main
 
+//-----------------------------------------------------MENU--------------------------------------------------------------
+
    public static void menu() {
       String menu="";
       while(!menu.equals("g")&&!menu.equals("p")&&!menu.equals("s")&&!menu.equals("q")){ 
@@ -54,13 +58,15 @@ public class WordSearch {
          menu = input.next();
       } // end while
    
+//-----------------------------------------------------GENERATE----------------------------------------------------------
+   
       if(menu.equals("g")){
       
          words.clear();
          wordSearch = new String[sizeOfWordSearch][sizeOfWordSearch];
          wordSearchKey = new String[sizeOfWordSearch][sizeOfWordSearch];
       
-         for(int i = 0; i < 5; i++) {////-------------------------------------------------------------------------------------------------------------
+         for(int i = 0; i < 5; i++) {
             System.out.print("Please choose a word that is less than 10 letters \t");
             
             
@@ -85,7 +91,7 @@ public class WordSearch {
             }
          
          
-         // setting display range for wordsearch
+               // setting display range for wordsearch
             for(int x = 0; x < sizeOfWordSearch; x++) {
                for(int y = 0; y < sizeOfWordSearch; y++) {
                   if(wordSearch[x][y] != null) {
@@ -120,6 +126,8 @@ public class WordSearch {
          } // end of for-loop i
       }
       
+//-----------------------------------------------------PLAY-----------------------------------------------------------
+      
       else if(menu.equals("p")){
          System.out.println("WORD SEARCH:");
            // for loop to print wordsearch
@@ -130,6 +138,8 @@ public class WordSearch {
             System.out.println();
          } // end of for-loop i
       }
+      
+//-----------------------------------------------------SOLVE-----------------------------------------------------------
       
       else if(menu.equals("s")){
          System.out.println("WORD SEARCH ANSWER KEY:");
@@ -142,6 +152,9 @@ public class WordSearch {
          } // end of for-loop i
       }
       
+//-----------------------------------------------------QUIT-----------------------------------------------------------
+
+      
       else if(menu.equals("q")){
          System.out.println("thank you for playing.");
          System.exit(0);
@@ -149,6 +162,8 @@ public class WordSearch {
       menu();
    } // end menu
    
+//-----------------------------------------------------WORD-1---------------------------------------------------------
+
    
    private static void word1(){
       firstWord = input.next();
@@ -165,6 +180,8 @@ public class WordSearch {
          wordSearchKey[positionV][positionH + j] = character.toUpperCase(); // adds the word all caps
       }//end of for
    } // end word1
+
+//-----------------------------------------------------WORD-2---------------------------------------------------------
 
    public static void word2(){
       secondWord = input.next();
@@ -189,6 +206,7 @@ public class WordSearch {
          } // end of for-loop y
       } // end of  for-loop x
    
+         // If no match
       if(placement == false) { // default position if no letters match
       
          positionV =  positionV - 2;
@@ -200,6 +218,9 @@ public class WordSearch {
          }
       } // end of if false
    }
+
+//-----------------------------------------------------WORD-3---------------------------------------------------------
+
 
    public static void word3(){
       thirdWord = input.next();
@@ -219,14 +240,11 @@ public class WordSearch {
                      if(tempV + i < 0 || tempV + i > 19 || tempH - i < 0 || tempH - i > 19){
                         placement = false;
                      }
-                     
-                     
                      else { 
                         if(wordSearch[tempV][tempH - i] != null && !wordSearch[tempV][tempH - i].equals(character)) {
                            placement = false;
                         }//end of if
-                     }//end of else
-                                          
+                     }//end of else                      
                   }
                   if(placement) {
                      positionV = positionV + x;
@@ -241,6 +259,8 @@ public class WordSearch {
             } // end of if
          } // end of y
       } // end of x   
+      
+         // If no match
       if(placement == false) { // default position if no match is found
          positionV = positionV + 4;
          positionH = positionV + 4;
@@ -252,15 +272,13 @@ public class WordSearch {
       } // end if  
    } // end of word3
 
+//-----------------------------------------------------WORD-4---------------------------------------------------------
+
    public static void word4(){
       fourthWord = input.next();
       currentWord = fourthWord;
       words.add(fourthWord);
-    
-    
       
-   
-     
       placement = false;
       for(int x = 0; x < words.get(words.size() - 2).length(); x++) {
          for(int y = 0; y < currentWord.length(); y++) { // goes through second word
@@ -277,9 +295,6 @@ public class WordSearch {
                      if(tempV + i < 0 || tempV + i > 19 || tempH - i < 0 || tempH - i > 19){
                         placement = false;
                      }
-                     
-                     
-                     
                      else {
                         if(wordSearch[tempV - i][tempH] != null && !wordSearch[tempV - i][tempH].equals(character)) {
                            placement = false;
@@ -301,7 +316,8 @@ public class WordSearch {
          } // end of y
       } // end of x 
    
-      if(placement == false) {
+          // If no match
+      if(placement == false) {// default position if no letters match
          
          positionV = 14;
          positionH = 14;
@@ -311,33 +327,16 @@ public class WordSearch {
             wordSearch[positionV - i][positionH] = character; // adds word to wordSearch lower case
             wordSearchKey[positionV - i][positionH] = character.toUpperCase(); // adds the word all caps
          }
-      }
-     
-     
-     
-     
-     
-     
+      }     
    } // end of word4
    
+//-----------------------------------------------------WORD-5---------------------------------------------------------
+
    public static void word5(){
       fiveWord = input.next();
       currentWord = fiveWord;
       words.add(fiveWord);
-   
-   
-    /*for(int j = 0; j < currentWord.length(); j++) {
-       String character = "" + currentWord.charAt(j);
-       
-       wordSearch[j][14 - j] = character.toLowerCase(); // adds word to wordSearch lower case
-       wordSearchKey[j][14 - j] = character.toUpperCase(); // adds the word all caps
-    
-    }
-   */
-   
-   
-   
-   
+      
       placement = false;
       for(int x = 0; x < words.get(words.size() - 2).length(); x++) {
          for(int y = 0; y < currentWord.length(); y++) { // goes through second word
@@ -361,8 +360,6 @@ public class WordSearch {
                            placement = false;
                         }
                      }//end of else
-                     
-                     
                   }
                      
                   if(placement == true) {
@@ -379,7 +376,8 @@ public class WordSearch {
          } // end of y
       } // end of x 
    
-      if(placement == false) {
+           // If no match
+      if(placement == false) {// default position if no letters match
          positionV = 0;
          positionH = 19;
          while(wordSearch[positionV][positionH] == null) {
@@ -393,9 +391,7 @@ public class WordSearch {
          for(int i = 0; i < currentWord.length(); i++) { // places on left side
             
             placement = false;
-                     
-         
-            
+               
             String character = "" + currentWord.charAt(i);
             wordSearch[positionV + i][positionH - i] = character; // adds word to wordSearch lower case
             wordSearchKey[positionV + i][positionH - i] = character.toUpperCase(); // adds the word all caps

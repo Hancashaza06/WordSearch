@@ -1,6 +1,7 @@
 //Programmer: David Rukashaza-Hancock
 //Assignment: Word Search
-//Extra Credit: words cross 
+//Extra Credit: Words cross 
+//Class: CS 145
 
 import java.util.*;
 import java.io.*;
